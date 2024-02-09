@@ -17,5 +17,6 @@
     "DECAY_RATE": 0.999,
     "DECAY_STEPS": 100,
     "EPOCHS": 1000,
-    "BATCH_SIZE": 128
+    "BATCH_SIZE": 128,
+    "musescoreDirectPNGPath": "C:/Program Files/MuseScore 4/bin/MuseScore4.exe"
 }

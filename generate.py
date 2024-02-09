@@ -9,14 +9,15 @@ from mustransformer.data import DataHandler
 from mustransformer.generator import MusicGenerator
 from mustransformer.model import build_model
 
-us = music21.environment.Environment()
-us['musescoreDirectPNGPath'] = r'C:/Program Files/MuseScore 4/bin/MuseScore4.exe'
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
 with open('config.json', "r", encoding='utf8') as fh:
     config = json.load(fh)
 GENERATE_LEN = config["GENERATE_LEN"]
+
+us = music21.environment.Environment()
+us['musescoreDirectPNGPath'] = config["musescoreDirectPNGPath"]
 
 
 class MusicSampleGenerator2:

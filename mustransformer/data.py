@@ -62,7 +62,7 @@ class DataHandler:
         vocab = vectorize_layer.get_vocabulary()
         return ds, vectorize_layer, vocab
 
-    def get_notes_durations_ds_vocab(self):
+    def get_notes_durations_ds_vocab(self, display=False):
         notes_seq_ds, notes_vectorize_layer, notes_vocab = self.create_dataset(self.notes, BATCH_SIZE)
         durations_seq_ds, durations_vectorize_layer, durations_vocab = self.create_dataset(self.durations, BATCH_SIZE)
         self.seq_ds = tf.data.Dataset.zip((notes_seq_ds, durations_seq_ds))
@@ -72,16 +72,16 @@ class DataHandler:
         self.durations_vectorize_layer = durations_vectorize_layer
         self.notes_vocab = notes_vocab
         self.durations_vocab = durations_vocab
+        if display:
+            # Display some token:note mappings
+            print(f"\nNOTES_VOCAB: length = {len(notes_vocab)}")
+            for i, note in enumerate(notes_vocab[:10]):
+                print(f"{i}: {note}")
 
-        # Display some token:note mappings
-        print(f"\nNOTES_VOCAB: length = {len(notes_vocab)}")
-        for i, note in enumerate(notes_vocab[:10]):
-            print(f"{i}: {note}")
-
-        print(f"\nDURATIONS_VOCAB: length = {len(durations_vocab)}")
-        # Display some token:duration mappings
-        for i, note in enumerate(durations_vocab[:10]):
-            print(f"{i}: {note}")
+            print(f"\nDURATIONS_VOCAB: length = {len(durations_vocab)}")
+            # Display some token:duration mappings
+            for i, note in enumerate(durations_vocab[:10]):
+                print(f"{i}: {note}")
 
     def prepare_inputs(self, notes, durations):
         # Create the training set of sequences and the same sequences shifted by one note

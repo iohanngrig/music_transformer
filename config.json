@@ -1,0 +1,21 @@
+{
+    "PARSE_MIDI_FILES": false,
+    "LOAD_MODEL": true,
+    "MIDI_DATA_PATH": "data/midi/",
+    "PARSED_DATA_PATH": "data/parsed_data/",
+    "DATASET_REPETITIONS": 1,
+    "GENERATE_LEN": 192,
+    "SEQ_LEN": 192,
+    "EMBEDDING_DIM": 128,
+    "KEY_DIM": 128,
+    "N_HEADS": 8,
+    "DROPOUT_RATE": 0.1,
+    "FEED_FORWARD_DIM": 128,
+    "LEARNING_RATE": 0.001,
+    "BETA_LOW": 0.9,
+    "BETA_UP": 0.99,
+    "DECAY_RATE": 0.999,
+    "DECAY_STEPS": 100,
+    "EPOCHS": 1000,
+    "BATCH_SIZE": 128
+}

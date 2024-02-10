@@ -7,13 +7,7 @@ import tensorflow as tf
 def set_seed(seed):
     random.seed(seed)
     np.random.seed(seed)
-    if tf.cuda.is_available():
-        tf.cuda.manual_seed(seed)
-        tf.cuda.manual_seed_all(seed)
-        tf.backends.cudnn.deterministic = True
-        tf.backends.cudnn.benchmark = False
-    else:
-        tf.manual_seed(seed)
+    tf.random.set_seed(seed)
 
 
 def get_files(directory, extension):

@@ -63,7 +63,6 @@ class SinePositionEncoding(keras.layers.Layer):
         positional_encodings = (
             tf.sin(angles) * sin_mask + tf.cos(angles) * cos_mask
         )
-
         return tf.broadcast_to(positional_encodings, input_shape)
 
     def get_config(self):

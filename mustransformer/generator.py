@@ -121,19 +121,6 @@ class MusicGenerator(callbacks.Callback):
                 break
         return info
 
-    def on_epoch_end_old(self, epoch, logs=None):
-        info = self.generate(
-            ["START"], ["0.0"], max_tokens=GENERATE_LEN, temperature=0.5
-        )
-        midi_stream = info[-1]["midi"].chordify()
-        print(info[-1]["prompt"])
-        midi_stream.show()
-        midi_stream.write(
-            "midi",
-            fp=os.path.join("data/generated", 
-                            "output-" + str(epoch).zfill(4) + ".mid")
-        )
-
     def on_epoch_end(self, epoch, logs=None):
         if not epoch % 5:
             info = self.generate(

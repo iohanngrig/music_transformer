@@ -5,7 +5,7 @@
 * Model learns `notes` and `durations` from the midi files
 * Difference from the original algorithm in Ref [1] is that instead of keeping only the last note from each chord, we keep the highest 4 dropping the same lower notes that are in different octaves.
 * The drawback is that, if notes in a chord have different durations, longer notes won't be sustained, but replayed. This will result in a characteristic hammering pattern. Also, durations are not learned as good as notes, resulting in a jazz like pattern.
-* The vocabulary consists not only of single notes (singlets) but of duplets, triplets and quadruplets of notes. However, since not all combinations of notes are likely the total size of the dictionary is 7,567 instead of ${89 \choose 4} = 2,441,626$, where 89 is the number of notes on a piano, plus an empty note. 
+* The vocabulary consists not only of single notes (singlets) but of duplets, triplets and quadruplets of notes. However, since not all combinations of notes are likely the total size of the dictionary is significantly smaller than the combinatorial value. 
 * This repo comes with a pre-trained model
 * The midi output is generated inside the `data/generated` folder.
 
@@ -58,10 +58,11 @@ You can generate via `generate.py` script
 ```bash
 python generate.py
 ```
+or with optional parameters, e.g. `python generate.py --number [number of generated samples: int>0] --length [multiple of generating length: float>0] --temperature [variability: float>0] --seed [random seed: int>0] --draw [draw/show musical score: 0 or 1]`
 
 ## Dataset
 
-The dataset consists of works by J.S. Bach. Midi files for training are placed inside the data/midi folder. You can try different/larger datasets.
+The dataset consists of works by J.S. Bach. Midi files for training are placed inside the `data/midi` folder. 
 
 ## Training
 

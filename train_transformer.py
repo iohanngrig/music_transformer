@@ -3,11 +3,12 @@ import json
 import music21
 from keras import callbacks
 
-from utils.common import get_files
+from utils.common import get_files, set_seed
 from utils.midi_tools import parse_midi_files, load_parsed_files
 from mustransformer.data import DataHandler
 from mustransformer.model import build_model
 from mustransformer.generator import MusicGenerator
+
 
 us = music21.environment.Environment()
 us['musescoreDirectPNGPath'] = r'C:/Program Files/MuseScore 4/bin/MuseScore4.exe'
@@ -19,6 +20,8 @@ with open(CONFIG, "r", encoding='utf8') as fh:
 
 EPOCHS = config["EPOCHS"]
 LOAD_MODEL = config["LOAD_MODEL"]
+
+set_seed(42)
 
 dh = DataHandler()
 
